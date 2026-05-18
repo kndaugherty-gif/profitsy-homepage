@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- TITLE -->
+<title>Etsy & Shopify Bulk Order Profit Calculator for POD Sellers | Profitsy</title>
+
+<!-- META DESCRIPTION (148 chars) -->
+<meta name="description" content="Free profit calculator for Etsy and Shopify POD sellers. Bulk order math, daily sale previews, and price-change graphs — all in one tool.">
+
+<meta name="author" content="Profitsy">
+<link rel="canonical" href="https://profitsy.app/">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Profitsy">
+<meta property="og:url" content="https://profitsy.app/">
+<meta property="og:title" content="Etsy & Shopify Bulk Order Profit Calculator for POD Sellers | Profitsy">
+<meta property="og:description" content="Free profit calculator for Etsy and Shopify POD sellers. Bulk order math, daily sale previews, and price-change graphs — all in one tool.">
+<meta property="og:image" content="https://profitsy.app/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- TWITTER -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://profitsy.app/">
+<meta name="twitter:title" content="Etsy & Shopify Bulk Order Profit Calculator for POD Sellers | Profitsy">
+<meta name="twitter:description" content="Free profit calculator for Etsy and Shopify POD sellers. Bulk order math, daily sale previews, and price-change graphs — all in one tool.">
+<meta name="twitter:image" content="https://profitsy.app/social-card.png">
+
+<meta name="apple-mobile-web-app-title" content="Profitsy">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="/favicon.ico">
+
+<!-- SCHEMA: SoftwareApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Profitsy",
+  "description": "All-in-one profit calculator for Etsy and Shopify print-on-demand sellers. Supports bulk orders, daily sale discount previews, and price-change graphs.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://profitsy.app/",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Profitsy",
+  "url": "https://profitsy.app/",
+  "logo": "https://profitsy.app/logo.png"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Profitsy work for both Etsy and Shopify sellers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Profitsy is built for print-on-demand sellers running on Etsy, Shopify, or both. Most POD sellers sell on multiple platforms — Profitsy handles the fee math for each so you see real profit on either side."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the bulk order calculator important?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bulk orders are where POD sellers make extra profit. Wedding party shirts, corporate gift orders, and multi-pack listings can earn far more per order than single sales — but only if you price them right. Profitsy calculates exactly what to charge so you never undercharge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the daily sale preview?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An easy-to-read graph that shows your real profit at different sale discount levels — 15% off, 20% off, 25% off — so you can pick a daily sale percentage that still pays. See exactly when a discount starts eating your margin instead of growing your shop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the price-change preview work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Thinking of raising your prices? Profitsy shows a side-by-side graph of your current margins vs. the new margins before you publish. See exactly how a $1, $3, or $5 increase affects your bottom line."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Profitsy work on mobile?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Profitsy is fully responsive and runs in any mobile browser, so you can price bulk orders from your phone anywhere. Native iOS and Android apps are coming soon."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Profitsy free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Run bulk-order calculations, daily sale previews, and price-change graphs without paying. No card required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to connect my Etsy or Shopify store?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Profitsy works without any store connection. Type in product details and get the math in seconds — no API setup, no permissions."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  /* COLOR PALETTE — matched to Profitsy logo */
+  :root {
+    --green: #87A66D;
+    --green-dark: #6F8D58;
+    --green-darker: #587047;
+    --green-light: #E8EFE0;
+    --navy: #1B2940;
+    --gray: #6B7785;
+    --light-border: rgba(27, 41, 64, 0.08);
+    --cream: #FAFAF7;
+    --white: #FFFFFF;
+
+    --accent-orange: #E89A3F;
+    --accent-pink: #E27FB0;
+    --accent-purple: #9B7FD4;
+    --accent-cyan: #34B5D6;
+    --accent-yellow: #F0D060;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* HEADER */
+  header {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--light-border);
+    background: var(--cream);
+  }
+  .header-inner { display: flex; justify-content: space-between; align-items: center; }
+  .logo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--navy);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.01em;
+  }
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: var(--green);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 16px;
+    font-family: Georgia, serif;
+  }
+  nav a {
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 28px;
+    font-size: 15px;
+  }
+  nav a:hover { color: var(--green-dark); }
+
+  .btn {
+    display: inline-block;
+    background: var(--green);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(135, 166, 109, 0.35);
+  }
+  .btn-navy { background: var(--navy); color: var(--white); }
+  .btn-navy:hover { background: #0F1A2E; box-shadow: 0 10px 30px rgba(27, 41, 64, 0.35); }
+  .btn-large { padding: 18px 36px; font-size: 18px; }
+
+  /* PLATFORM BADGES */
+  .platforms { display: inline-flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+  .platform-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    border: 2px solid var(--navy);
+    color: var(--navy);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .platform-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-orange); }
+  .platform-badge.shopify .dot { background: var(--green); }
+
+  /* HERO */
+  .hero {
+    padding: 80px 0 64px;
+    background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .sparkle { position: absolute; pointer-events: none; }
+  .sparkle.dot { border-radius: 50%; }
+  .sparkle.star {
+    width: 24px; height: 24px;
+    background: transparent;
+    clip-path: polygon(50% 0%, 56% 44%, 100% 50%, 56% 56%, 50% 100%, 44% 56%, 0% 50%, 44% 44%);
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 820px; }
+  .eyebrow {
+    display: inline-block;
+    background: var(--green);
+    color: var(--white);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    color: var(--navy);
+  }
+  h1 .highlight { color: var(--green-dark); }
+  .hero-sub {
+    font-size: clamp(18px, 2.2vw, 22px);
+    color: var(--gray);
+    margin-bottom: 36px;
+    max-width: 660px;
+  }
+  .hero-cta-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .hero-cta-note { color: var(--gray); font-size: 14px; }
+
+  /* SECTIONS */
+  section { padding: 80px 0; }
+  h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    color: var(--navy);
+  }
+  .section-sub {
+    color: var(--gray);
+    font-size: 18px;
+    margin-bottom: 48px;
+    max-width: 720px;
+  }
+
+  /* FEATURES — now a 6-card grid */
+  .features { background: var(--white); }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .feature-card {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 32px;
+    border: 2px solid transparent;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .feature-card:hover { border-color: var(--green); transform: translateY(-3px); }
+  .feature-icon {
+    width: 52px; height: 52px;
+    background: var(--green);
+    color: var(--white);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  /* Rotate accent colors across the six cards */
+  .feature-card:nth-child(2) .feature-icon { background: var(--accent-orange); }
+  .feature-card:nth-child(3) .feature-icon { background: var(--accent-purple); }
+  .feature-card:nth-child(4) .feature-icon { background: var(--accent-cyan); }
+  .feature-card:nth-child(5) .feature-icon { background: var(--accent-yellow); color: var(--navy); }
+  .feature-card:nth-child(6) .feature-icon { background: var(--accent-pink); }
+  .feature-card h3 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .feature-card p { color: var(--gray); font-size: 16px; }
+
+  /* "Coming soon" pill inside a feature card */
+  .coming-soon-pill {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green-darker);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* BULK ORDER HIGHLIGHT */
+  .bulk-section {
+    background: var(--navy);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .bulk-section::before {
+    content: "";
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 360px; height: 360px;
+    background: var(--green);
+    border-radius: 50%;
+    opacity: 0.18;
+  }
+  .bulk-section h2 { color: var(--white); position: relative; z-index: 1; }
+  .bulk-section .section-sub { color: rgba(255, 255, 255, 0.7); position: relative; z-index: 1; }
+
+  .screenshot-frame {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 18px;
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    max-width: 720px;
+    margin-top: 32px;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(8px);
+  }
+  .screenshot-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .calc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .calc-header h3 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    color: var(--white);
+    margin: 0;
+  }
+  .calc-platform-pill {
+    background: rgba(232, 154, 63, 0.18);
+    color: var(--accent-orange);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .calc-input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .calc-input {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .calc-input-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .calc-input-value { font-size: 18px; font-weight: 700; color: var(--white); }
+  .calc-row {
+    display: flex; justify-content: space-between;
+    padding: 10px 0;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .calc-row:last-child {
+    border-bottom: none;
+    padding-top: 18px;
+    margin-top: 8px;
+    border-top: 2px solid rgba(255, 255, 255, 0.15);
+  }
+  .calc-label { color: rgba(255, 255, 255, 0.7); }
+  .calc-value { font-weight: 700; color: var(--white); }
+  .calc-value.deduct { color: var(--accent-pink); }
+  .calc-value.profit { color: var(--green); font-size: 22px; }
+  .calc-label.profit { color: var(--green); font-weight: 700; font-size: 16px; }
+
+  .per-shirt-callout {
+    background: var(--green);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: 720px;
+    position: relative;
+    z-index: 1;
+  }
+  .per-shirt-big {
+    font-family: Georgia, serif;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .per-shirt-text {
+    font-size: 16px;
+    line-height: 1.45;
+    font-weight: 500;
+  }
+  .per-shirt-text strong { font-weight: 700; }
+
+  /* CHARTS */
+  .charts-section { background: var(--white); }
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 32px;
+  }
+  @media (max-width: 760px) {
+    .chart-grid { grid-template-columns: 1fr; }
+  }
+  .chart-card {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 32px;
+  }
+  .chart-card h3 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .chart-card p { color: var(--gray); font-size: 15px; margin-bottom: 24px; }
+  .chart-svg-wrap { background: var(--white); border-radius: 12px; padding: 20px; }
+  .chart-screenshot-note {
+    color: rgba(27, 41, 64, 0.45);
+    font-size: 12px;
+    margin-top: 12px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* COMPARISON */
+  .compare { background: var(--cream); }
+  .compare-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 32px;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(27, 41, 64, 0.05);
+  }
+  .compare-table th, .compare-table td {
+    padding: 18px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(27, 41, 64, 0.06);
+  }
+  .compare-table th {
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray);
+    background: var(--cream);
+  }
+  .compare-table td.yes { color: var(--green-dark); font-weight: 700; }
+  .compare-table td.no { color: rgba(27, 41, 64, 0.4); }
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  /* FAQ */
+  .faq { background: var(--white); }
+  .faq-list { max-width: 800px; }
+  .faq-item {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    border: 1px solid var(--light-border);
+  }
+  .faq-item h3 {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--navy);
+  }
+  .faq-item p { color: var(--gray); font-size: 16px; }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--green);
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: var(--green-dark);
+    border-radius: 50%;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  .final-cta .container { position: relative; z-index: 1; }
+  .final-cta h2 { color: var(--white); max-width: 720px; margin: 0 auto 16px; }
+  .final-cta p { font-size: 20px; opacity: 0.95; margin-bottom: 36px; }
+  .final-cta .btn { background: var(--navy); color: var(--white); }
+  .final-cta .btn:hover { background: #0F1A2E; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 48px 0 32px;
+    font-size: 14px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+  footer h4 { color: var(--white); font-size: 15px; margin-bottom: 16px; font-weight: 700; }
+  footer ul { list-style: none; }
+  footer li { margin-bottom: 10px; }
+  footer a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  footer a:hover { color: var(--green); }
+  .copyright { padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+  @media (max-width: 720px) {
+    nav a:not(.btn) { display: none; }
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    section { padding: 56px 0; }
+    .hero { padding: 48px 0; }
+    .calc-input-row { grid-template-columns: 1fr; }
+    .per-shirt-callout { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark">$</span>
+      <span>Profitsy</span>
+    </a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#bulk">Bulk orders</a>
+      <a href="#charts">Charts</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://app.profitsy.app" class="btn">Open calculator</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="sparkle dot" style="top:80px; left:6%; width:10px; height:10px; background: var(--accent-yellow);"></span>
+  <span class="sparkle star" style="top:120px; left:14%; background: var(--accent-orange); width:28px; height:28px;"></span>
+  <span class="sparkle dot" style="top:60px; right:18%; width:14px; height:14px; background: var(--accent-purple);"></span>
+  <span class="sparkle star" style="top:160px; right:10%; background: var(--accent-cyan);"></span>
+  <span class="sparkle dot" style="bottom:80px; left:8%; width:12px; height:12px; background: var(--accent-pink);"></span>
+  <span class="sparkle star" style="bottom:120px; right:14%; background: var(--accent-pink); width:22px; height:22px;"></span>
+  <span class="sparkle dot" style="bottom:60px; right:6%; width:9px; height:9px; background: var(--accent-yellow);"></span>
+
+  <div class="container hero-inner">
+    <div class="platforms">
+      <span class="platform-badge"><span class="dot"></span>For Etsy</span>
+      <span class="platform-badge shopify"><span class="dot"></span>For Shopify</span>
+    </div>
+    <span class="eyebrow">Profit calculator for POD sellers</span>
+    <h1>The bulk order profit calculator <span class="highlight">Etsy &amp; Shopify sellers actually need.</span></h1>
+    <p class="hero-sub">
+      Most POD sellers run on both Etsy and Shopify — and most calculators only do one,
+      one order at a time. Profitsy is built for both platforms, with bulk order math,
+      daily sale previews, and price-change graphs in a single free tool.
+    </p>
+    <div class="hero-cta-row">
+      <a href="https://app.profitsy.app" class="btn btn-large">Open calculator — it's free</a>
+      <span class="hero-cta-note">No signup required to try it</span>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <h2>Everything you need to price POD products that make a profit.</h2>
+    <p class="section-sub">
+      Built around how Etsy and Shopify POD sellers really price — bulk orders, daily sale
+      testing, and visual price-change modeling. Not a generic single-item fee tool.
+    </p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">$</div>
+        <h3>Built for Etsy + Shopify</h3>
+        <p>Both platforms in one tool. Etsy's listing, transaction, and offsite ad fees — and Shopify's transaction and processing fees — all calculated correctly per order, no switching tabs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">×</div>
+        <h3>Bulk order calculator</h3>
+        <p>Bulk orders are where POD sellers make their money. Wedding party shirts, multi-pack listings, custom corporate orders — Profitsy calculates the real profit on multi-item carts so you never undercharge again.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">%</div>
+        <h3>Daily sale preview</h3>
+        <p>Run a daily sale without guessing. See your real profit at 15%, 20%, or 25% off in one easy-to-read graph — and know exactly when a discount starts eating your margin instead of growing your shop.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">↑</div>
+        <h3>Price-change preview</h3>
+        <p>Thinking about raising prices? Profitsy shows a visual graph comparing your current margin vs. the new margin before you publish. See exactly how a $1, $3, or $5 increase moves your bottom line.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Works on your phone <span class="coming-soon-pill">Apps coming soon</span></h3>
+        <p>Profitsy runs in any mobile browser, so you can price a bulk quote from the post office line, the couch, or between Pinterest scrolls. Native iOS and Android apps are on the way for even faster access.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✦</div>
+        <h3>Built for humans, not spreadsheets</h3>
+        <p>No 47-tab workbook, no broken VLOOKUPs, no copy-paste errors at midnight. Type three numbers, see your real profit. Profitsy is what your spreadsheet was trying to be — without the headaches.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bulk-section" id="bulk">
+  <div class="container">
+    <h2>Bulk orders are where POD sellers make their margin.</h2>
+    <p class="section-sub">
+      A 12-pack of personalized shirts, a wedding party order, or a corporate gift bundle
+      can earn far more per order than single sales — but only if you've priced it right.
+      Profitsy calculates bulk order profit so you can quote with confidence.
+    </p>
+
+    <div class="screenshot-frame">
+      <div class="screenshot-label">Bulk order calculator</div>
+      <div class="calc-header">
+        <h3>Custom wedding party order</h3>
+        <span class="calc-platform-pill">Etsy</span>
+      </div>
+
+      <div class="calc-input-row">
+        <div class="calc-input">
+          <div class="calc-input-label">Quantity</div>
+          <div class="calc-input-value">12 shirts</div>
+        </div>
+        <div class="calc-input">
+          <div class="calc-input-label">Price per item</div>
+          <div class="calc-input-value">$26.00</div>
+        </div>
+        <div class="calc-input">
+          <div class="calc-input-label">Cost per item</div>
+          <div class="calc-input-value">$11.40</div>
+        </div>
+      </div>
+
+      <div class="calc-row"><span class="calc-label">Order revenue (12 × $26)</span><span class="calc-value">$312.00</span></div>
+      <div class="calc-row"><span class="calc-label">Listing fees (12 × $0.20)</span><span class="calc-value deduct">−$2.40</span></div>
+      <div class="calc-row"><span class="calc-label">Etsy transaction (6.5%)</span><span class="calc-value deduct">−$20.28</span></div>
+      <div class="calc-row"><span class="calc-label">Payment processing</span><span class="calc-value deduct">−$9.61</span></div>
+      <div class="calc-row"><span class="calc-label">Product cost (12 × $11.40)</span><span class="calc-value deduct">−$136.80</span></div>
+      <div class="calc-row"><span class="calc-label">Combined shipping</span><span class="calc-value deduct">−$23.00</span></div>
+      <div class="calc-row"><span class="calc-label profit">PROFIT ON THIS ORDER</span><span class="calc-value profit">$119.91</span></div>
+    </div>
+
+    <div class="per-shirt-callout">
+      <div class="per-shirt-big">$10/shirt</div>
+      <div class="per-shirt-text">
+        <strong>That's your real profit per shirt on this bulk order — $119.91 total.</strong>
+        Profitsy splits the per-item math out for you so you can price every bulk quote with confidence and walk away knowing exactly what's yours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="charts-section" id="charts">
+  <div class="container">
+    <h2>Visual math, not spreadsheet math.</h2>
+    <p class="section-sub">
+      Two graphs that change how you price: test daily sale discount levels before you
+      run them, and preview what a permanent price change does to your margins.
+    </p>
+
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3>Daily sale preview</h3>
+        <p>Test 15%, 20%, or 25% off — find the sale that grows your shop without eating profit.</p>
+        <div class="chart-svg-wrap">
+          <svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
+            <line x1="50" y1="190" x2="350" y2="190" stroke="#1B2940" stroke-width="2"/>
+            <line x1="50" y1="20"  x2="50"  y2="190" stroke="#1B2940" stroke-width="2"/>
+
+            <text x="44" y="194" font-size="10" fill="#6B7785" text-anchor="end">$0</text>
+            <text x="44" y="151" font-size="10" fill="#6B7785" text-anchor="end">$2.50</text>
+            <text x="44" y="109" font-size="10" fill="#6B7785" text-anchor="end">$5</text>
+            <text x="44" y="67"  font-size="10" fill="#6B7785" text-anchor="end">$7.50</text>
+            <text x="44" y="24"  font-size="10" fill="#6B7785" text-anchor="end">$10</text>
+
+            <rect x="80"  y="34"  width="50" height="156" rx="6" fill="#87A66D"/>
+            <rect x="150" y="108" width="50" height="82"  rx="6" fill="#F0D060"/>
+            <rect x="220" y="132" width="50" height="58"  rx="6" fill="#E89A3F"/>
+            <rect x="290" y="157" width="50" height="33"  rx="6" fill="#E27FB0"/>
+
+            <text x="105" y="28"  font-size="12" font-weight="700" fill="#1B2940" text-anchor="middle">$9.20</text>
+            <text x="175" y="102" font-size="12" font-weight="700" fill="#1B2940" text-anchor="middle">$4.85</text>
+            <text x="245" y="126" font-size="12" font-weight="700" fill="#1B2940" text-anchor="middle">$3.40</text>
+            <text x="315" y="151" font-size="12" font-weight="700" fill="#1B2940" text-anchor="middle">$1.95</text>
+
+            <text x="105" y="208" font-size="11" fill="#1B2940" text-anchor="middle" font-weight="700">Full price</text>
+            <text x="175" y="208" font-size="11" fill="#1B2940" text-anchor="middle" font-weight="700">15% off</text>
+            <text x="245" y="208" font-size="11" fill="#1B2940" text-anchor="middle" font-weight="700">20% off</text>
+            <text x="315" y="208" font-size="11" fill="#1B2940" text-anchor="middle" font-weight="700">25% off</text>
+
+            <text x="105" y="222" font-size="9" fill="#6B7785" text-anchor="middle">$32.00</text>
+            <text x="175" y="222" font-size="9" fill="#6B7785" text-anchor="middle">$27.20</text>
+            <text x="245" y="222" font-size="9" fill="#6B7785" text-anchor="middle">$25.60</text>
+            <text x="315" y="222" font-size="9" fill="#6B7785" text-anchor="middle">$24.00</text>
+
+            <text x="200" y="236" font-size="10" fill="#6B7785" text-anchor="middle" font-style="italic">Profit per sale at each discount</text>
+          </svg>
+        </div>
+        <div class="chart-screenshot-note">Mockup — the real chart updates with your product details</div>
+      </div>
+
+      <div class="chart-card">
+        <h3>Price increase preview</h3>
+        <p>Profit per sale at your current price vs. a permanent price increase.</p>
+        <div class="chart-svg-wrap">
+          <svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
+            <line x1="50" y1="190" x2="350" y2="190" stroke="#1B2940" stroke-width="2"/>
+            <line x1="50" y1="20"  x2="50"  y2="190" stroke="#1B2940" stroke-width="2"/>
+
+            <text x="44" y="194" font-size="10" fill="#6B7785" text-anchor="end">$0</text>
+            <text x="44" y="152" font-size="10" fill="#6B7785" text-anchor="end">$4</text>
+            <text x="44" y="110" font-size="10" fill="#6B7785" text-anchor="end">$8</text>
+            <text x="44" y="68"  font-size="10" fill="#6B7785" text-anchor="end">$12</text>
+            <text x="44" y="26"  font-size="10" fill="#6B7785" text-anchor="end">$16</text>
+
+            <rect x="90"  y="93"  width="55" height="97"  rx="6" fill="#E27FB0"/>
+            <rect x="165" y="64"  width="55" height="126" rx="6" fill="#F0D060"/>
+            <rect x="240" y="20"  width="55" height="170" rx="6" fill="#87A66D"/>
+
+            <text x="117" y="87"  font-size="13" font-weight="700" fill="#1B2940" text-anchor="middle">$9.20</text>
+            <text x="192" y="58"  font-size="13" font-weight="700" fill="#1B2940" text-anchor="middle">$12.00</text>
+            <text x="267" y="14"  font-size="13" font-weight="700" fill="#1B2940" text-anchor="middle">$16.20</text>
+
+            <text x="117" y="208" font-size="11" fill="#1B2940" text-anchor="middle" font-weight="700">Current</text>
+            <text x="192" y="208" font-size="11" fill="#1B2940" text-anchor="middle" font-weight="700">+$2</text>
+            <text x="267" y="208" font-size="11" fill="#1B2940" text-anchor="middle" font-weight="700">+$5</text>
+
+            <text x="117" y="222" font-size="9" fill="#6B7785" text-anchor="middle">$32.00</text>
+            <text x="192" y="222" font-size="9" fill="#6B7785" text-anchor="middle">$34.00</text>
+            <text x="267" y="222" font-size="9" fill="#6B7785" text-anchor="middle">$37.00</text>
+
+            <text x="200" y="236" font-size="10" fill="#6B7785" text-anchor="middle" font-style="italic">Profit per sale at each price</text>
+          </svg>
+        </div>
+        <div class="chart-screenshot-note">Mockup — the real preview updates as you change the price</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="compare">
+  <div class="container">
+    <h2>Profitsy vs the alternatives.</h2>
+    <p class="section-sub">
+      Spreadsheets break. Generic Etsy calculators ignore Shopify. Single-order calculators
+      miss the bulk math where most of your real margin lives.
+    </p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Profitsy</th>
+          <th>Spreadsheet</th>
+          <th>Generic calc</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Etsy + Shopify support</td>
+          <td class="yes">Yes</td>
+          <td class="no">Manual</td>
+          <td class="no">Etsy only</td>
+        </tr>
+        <tr>
+          <td>Bulk order pricing</td>
+          <td class="yes">Yes</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Daily sale preview</td>
+          <td class="yes">Yes</td>
+          <td class="no">Manual</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Price-change visual preview</td>
+          <td class="yes">Yes</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Always up-to-date fee rates</td>
+          <td class="yes">Yes</td>
+          <td class="no">You update</td>
+          <td class="no">Maybe</td>
+        </tr>
+        <tr>
+          <td>Free to use</td>
+          <td class="yes">Yes</td>
+          <td class="yes">Yes</td>
+          <td class="no">Varies</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <h2>Frequently asked questions.</h2>
+    <p class="section-sub">If you don't see what you're looking for, the calculator answers it faster than this page can.</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>Does Profitsy work for both Etsy and Shopify sellers?</h3>
+        <p>Yes. Profitsy is built for print-on-demand sellers running on Etsy, Shopify, or both. Most POD sellers sell on multiple platforms — Profitsy handles the fee math for each so you see real profit on either side.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why is the bulk order calculator important?</h3>
+        <p>Bulk orders are where POD sellers make extra profit. Wedding party shirts, corporate gift orders, and multi-pack listings can earn far more per order than single sales — but only if you price them right. Profitsy calculates exactly what to charge so you never undercharge.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What's the daily sale preview?</h3>
+        <p>An easy-to-read graph that shows your real profit at different sale discount levels — 15% off, 20% off, 25% off — so you can pick a daily sale percentage that still pays. See exactly when a discount starts eating your margin instead of growing your shop.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does the price-change preview work?</h3>
+        <p>Thinking of raising your prices? Profitsy shows a side-by-side graph of your current margins vs. the new margins before you publish. See exactly how a $1, $3, or $5 increase affects your bottom line.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does Profitsy work on mobile?</h3>
+        <p>Yes. Profitsy is fully responsive and runs in any mobile browser, so you can price bulk orders from your phone anywhere. Native iOS and Android apps are coming soon.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is Profitsy free to use?</h3>
+        <p>Yes. Run bulk-order calculations, daily sale previews, and price-change graphs without paying. No card required.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do I need to connect my Etsy or Shopify store?</h3>
+        <p>No. Profitsy works without any store connection. Type in product details and get the math in seconds — no API setup, no permissions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2>Stop pricing on guesses. Start pricing on the numbers.</h2>
+    <p>The calculator's free. Takes about 60 seconds.</p>
+    <a href="https://app.profitsy.app" class="btn btn-large">Open Profitsy →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="logo" style="color: var(--white); margin-bottom: 16px;">
+          <span class="logo-mark">$</span>
+          <span style="color: var(--white);">Profitsy</span>
+        </a>
+        <p style="margin-top: 12px; max-width: 360px;">
+          The free profit calculator for Etsy and Shopify POD sellers — bulk orders, daily sale previews, and price-change graphs in one tool.
+        </p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="https://app.profitsy.app">Calculator</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#bulk">Bulk orders</a></li>
+          <li><a href="#charts">Charts</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <ul>
+          <li><a href="https://app.profitsy.app/Login">Log in</a></li>
+          <li><a href="https://app.profitsy.app/Register">Sign up</a></li>
+          <li><a href="/privacy-policy">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 Profitsy. Built for Etsy + Shopify POD sellers.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
